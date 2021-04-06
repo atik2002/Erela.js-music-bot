@@ -2,6 +2,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = {
   name: "queue",
+  aliases: ['q'],
   run: (message, args) => {
     const player = message.client.manager.get(message.guild.id);
     if (!player) return message.reply("there is no player for this guild.");
