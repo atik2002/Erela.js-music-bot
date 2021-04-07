@@ -1,6 +1,6 @@
 module.exports = {
     name: "volume",
-    alaises: ['v'],
+    aliases: ['v'],
     run: (message, args) => {
       const player = message.client.manager.get(message.guild.id);
   
