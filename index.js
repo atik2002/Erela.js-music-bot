@@ -1,4 +1,4 @@
-const { Client, Collection } = require("discord.js");
+const { Client, Collection, DiscordAPIError, MessageEmbed } = require("discord.js");
 const { readdirSync } = require("fs");
 const { Manager } = require("erela.js");
 const config = require('./config.json');
@@ -46,7 +46,17 @@ client.manager = new Manager({
   ))
   .on("trackStart", (player, track) => {
     const channel = client.channels.cache.get(player.textChannel);
-    channel.send(`Now playing: \`${track.title}\`, requested by \`${track.requester.tag}\`.`);
+    const embed = new MessageEmbed()
+    .setColor('#00f70c')
+    .setAuthor(`Now playing:`, client.user.displayAvatarURL({
+      dynamic: true
+    }))
+    .setDescription(`${track.title}`)
+    .setTimestamp()
+    .setFooter(`Track requested by: ${player.queue.current.requester.tag}`, player.queue.current.requester.displayAvatarURL({
+      dynamic: true
+    }))
+    channel.send(embed);
   })
   .on("queueEnd", player => {
     const channel = client.channels.cache.get(player.textChannel);

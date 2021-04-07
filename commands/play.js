@@ -36,15 +36,32 @@ module.exports = {
           if (!player.queue.current) player.destroy();
           return message.reply('there were no results found.');
         case 'TRACK_LOADED':
+
+          const playmusic = new Discord.MessageEmbed()
+          .setColor('#00f70c')
+          .setAuthor(`Enqueuing:`, message.client.user.displayAvatarURL({
+            dynamic: true
+          }))
+          .setDescription(`${res.tracks[0].title}`)
+          .setTimestamp()
+
           player.queue.add(res.tracks[0]);
   
           if (!player.playing && !player.paused && !player.queue.size) player.play();
-          return message.reply(`enqueuing \`${res.tracks[0].title}\`.`);
+          return message.channel.send(playmusic);
         case 'PLAYLIST_LOADED':
           player.queue.add(res.tracks);
-  
+
+          const playlist = new Discord.MessageEmbed()
+          .setColor('#00f70c')
+          .setAuthor(`Enqueuing playlist:`, message.client.user.displayAvatarURL({
+            dynamic: true
+          }))
+          .setDescription(`${res.playlist.name}\` with ${res.tracks.length} tracks.`)
+          .setTimestamp()
+
           if (!player.playing && !player.paused && player.queue.totalSize === res.tracks.length) player.play();
-          return message.reply(`enqueuing playlist \`${res.playlist.name}\` with ${res.tracks.length} tracks.`);
+          return message.channel.send(playlist);
         case 'SEARCH_RESULT':
           let max = 5, collected, filter = (m) => m.author.id === message.author.id && /^(\d+|end)$/i.test(m.content);
           if (res.tracks.length < max) max = res.tracks.length;
@@ -80,12 +97,21 @@ module.exports = {
   
           const index = Number(first) - 1;
           if (index < 0 || index > max - 1) return message.reply(`the number you provided too small or too big (1-${max}).`);
-  
+          
           const track = res.tracks[index];
           player.queue.add(track);
+
+          const trackadd = new Discord.MessageEmbed()
+          .setColor('#00f70c')
+          .setAuthor(`Enqueuing:`, message.client.user.displayAvatarURL({
+            dynamic: true
+          }))
+          .setDescription(`${track.title}`)
+          .setTimestamp()
   
           if (!player.playing && !player.paused && !player.queue.size) player.play();
-          return message.reply(`enqueuing \`${track.title}\`.`);
+          return message.channel.send(trackadd);
+
       }
     },
   };
