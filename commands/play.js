@@ -3,6 +3,7 @@ const Discord = require('discord.js')
 module.exports = {
     name: 'play',
     aliases: ['p'],
+    description: "Plays your favourite music from youtube or spotify",
     run: async (message, args) => {
       const { channel } = message.member.voice;
   

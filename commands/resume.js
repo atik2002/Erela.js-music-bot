@@ -1,6 +1,7 @@
 module.exports = {
     name: "resume",
     aliases: ['rs'],
+    description: "Resumes the current paused song",
     run: (message) => {
       const player = message.client.manager.get(message.guild.id);
       if (!player) return message.reply("there is no player for this guild.");

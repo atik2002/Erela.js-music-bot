@@ -1,6 +1,7 @@
 module.exports = {
     name: "repeat",
     aliases: ['loop','lp'],
+    description: "toggles repeat modes",
     run: (message, args) => { 
       const player = message.client.manager.get(message.guild.id);
       if (!player) return message.reply("there is no player for this guild.");

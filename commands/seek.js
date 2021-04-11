@@ -3,6 +3,7 @@ const { MessageEmbed } = require('discord.js')
 module.exports = {
     name: "seek",
     aliases: [''],
+    description: "seek the current playing music",
     run: (message, args) => {
         try{
             function createBar(player)

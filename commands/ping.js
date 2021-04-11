@@ -2,6 +2,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = {
   name: "ping",
+  aliases: [''],
   description: "Display the bot connection stats",
   run : async (msg) => {
     let pingEmbed = new MessageEmbed()

@@ -1,6 +1,7 @@
 module.exports = {
     name: "skip",
     aliases: ['sk'],
+    description: "Skips the current playing music",
     run: (message) => { 
       const player = message.client.manager.get(message.guild.id);
       if (!player) return message.reply("there is no player for this guild.");

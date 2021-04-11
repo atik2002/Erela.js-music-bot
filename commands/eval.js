@@ -5,6 +5,8 @@ const {token} = require('../config.json')
 
 module.exports = {
     name : "eval",
+    aliases: [''],
+    description: "Owner only command",
     run : async(message) => {
         if (message.author.id !== '521383016325709825') {
         return message.channel.send(`This is a owner only command`);

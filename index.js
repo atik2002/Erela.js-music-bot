@@ -12,7 +12,7 @@ const clientSecret = config.clientSecret;
 const token = config.token;
 const prefix = config.prefix;
 
-const files = readdirSync("./commands")
+const files = readdirSync(`./commands/`)
   .filter(file => file.endsWith(".js"));
 
 for (const file of files) {
@@ -56,6 +56,17 @@ client.manager = new Manager({
     .setFooter(`Track requested by: ${player.queue.current.requester.tag}`, player.queue.current.requester.displayAvatarURL({
       dynamic: true
     }))
+    channel.send(embed);
+  })
+  .on("trackStuck", (player, track) => {
+    const channel = client.channels.cache.get(player.textChannel);
+    const embed = new MessageEmbed()
+    .setColor('RED')
+    .setAuthor(`Track Stuck:`, client.user.displayAvatarURL({
+      dynamic: true
+    }))
+    .setDescription(`${track.title}`)
+    .setTimestamp()
     channel.send(embed);
   })
   .on("queueEnd", player => {

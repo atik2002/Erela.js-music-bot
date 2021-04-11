@@ -3,6 +3,7 @@ const { MessageEmbed } = require('discord.js')
 module.exports = {
     name: 'nowplaying',
     aliases: ['np'],
+    description: "Show now playing music info",
     run: (message, args) => {
         try {
             function format(millis)

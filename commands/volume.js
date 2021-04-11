@@ -1,6 +1,7 @@
 module.exports = {
     name: "volume",
     aliases: ['v'],
+    description: "Set volume level of the music",
     run: (message, args) => {
       const player = message.client.manager.get(message.guild.id);
   
