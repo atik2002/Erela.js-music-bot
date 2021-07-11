@@ -9,4 +9,4 @@ A simple discord.js music bot based on erela.js and lavalink
 <br>
 <br>
 
-![alt text](https://img.errordev.tk/pKFz "screenshot")
+![alt text](https://img.errordev.tk/ZmQ7 "screenshot")
