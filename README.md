@@ -10,5 +10,3 @@ A simple discord.js music bot based on erela.js and lavalink
 <br>
 
 #NOTE- This bot is based on Discord.js V12 and needs a rewrite to support new Discord.js 13
-
-Discord .py 
