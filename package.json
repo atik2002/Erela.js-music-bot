@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^12.5.2",
+    "discord.js": "^14.9.0",
     "erela.js": "^2.3.3",
     "erela.js-spotify": "^1.2.0",
     "ms": "^2.1.3"
